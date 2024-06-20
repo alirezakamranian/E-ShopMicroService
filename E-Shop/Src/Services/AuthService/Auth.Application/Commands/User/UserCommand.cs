@@ -11,6 +11,7 @@ namespace Auth.Application.Commands.User
     public record UserCommand :IRequest<bool>
     {
         [Required]
-        public required string Name { get; set; }
+        public required string FullName { get; set; }
+        public required string NationalCode { get; set; }
     }
 }

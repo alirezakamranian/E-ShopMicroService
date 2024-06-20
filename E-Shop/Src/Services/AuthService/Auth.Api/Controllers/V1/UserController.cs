@@ -3,24 +3,20 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Auth.Application.Commands.User;
+using Asp.Versioning;
 
 namespace Auth.Api.Controllers.V1
 {
-    [Route("api/v1/user")]
     [ApiController]
-    public class UserController(IMediator mediator) : IControllerBase
+    [ApiVersion(1)]
+    [Route("api/v{v:apiVersion}/user")]
+    public class UserController() : IControllerBase
     {
-        public readonly IMediator _mediator = mediator;
-
-        /// <summary>
-        /// Add User Credentials
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost("Insert")]
-        public async Task<IActionResult> Insert([FromBody]UserCommand userCommand)
+        [HttpGet]
+        [MapToApiVersion(1)]
+        public async Task<IActionResult> get()
         {
-            var response = await _mediator.Send(userCommand);
-            return Ok();
+            return Ok("ffdsd");
         }
     }
 }
