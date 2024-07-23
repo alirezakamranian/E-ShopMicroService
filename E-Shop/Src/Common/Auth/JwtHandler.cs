@@ -12,7 +12,7 @@ namespace Auth
     public class JwtHandler : IJwtHandler
     {
         private readonly JwtOptions _options;
-        private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler;
+        private readonly JwtSecurityTokenHandler? _jwtSecurityTokenHandler;
         private readonly SecurityKey _issuerSigningKey;
         private readonly SigningCredentials _signingCredentials;
         private readonly JwtHeader _jwtHeader;
